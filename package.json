@@ -1,11 +1,11 @@
 {
   "name": "lcs-reflector",
   "description": "LiveCoding.Space reflector",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Nikolai Suslov",
   "scripts": {
-    "start": "node ./node-server.js -p 3001",
-    "startSSL": "node ./node-server.js -p 3001 -s -k ./cert/key.pem -c ./cert/cert.pem",
+    "start": "node ./node-server.js -p 3002",
+    "startSSL": "node ./node-server.js -p 3002 -s -k ./certs/server-key.pem -c ./certs/server-crt.pem -t ./certs/ca-crt.pem -w 12345",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "directories": {

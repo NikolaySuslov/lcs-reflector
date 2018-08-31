@@ -61,7 +61,7 @@ function startVWF() {
         } );
         var inst = Object.keys(global.instances);
         var jsonobject = {
-            "reflector": "v0.0.1"
+            "reflector": "v0.0.2"
             //"instances": inst
         }
         response.write( JSON.stringify( jsonobject ), "utf8" );
@@ -98,11 +98,12 @@ function startVWF() {
     var sslOptions = {
         key: ((argv.k || argv.key) ? fs.readFileSync(argv.k || argv.key) : undefined),
         cert: ((argv.c || argv.cert) ? fs.readFileSync(argv.c || argv.cert) : undefined),
+        ca: ( ( argv.t || argv.ca ) ? fs.readFileSync( argv.t || argv.ca ) : undefined ),
         passphrase: JSON.stringify(pass)
     };
 
     //create the server
-    var port = ((argv.p || argv.port) ? (argv.p || argv.port) : 3001);
+    var port = ((argv.p || argv.port) ? (argv.p || argv.port) : 3002);
 
     var srv = ssl ? https.createServer(sslOptions, OnRequest).listen(port) : http.createServer(OnRequest).listen(port);
     consoleNotice('Serving on port ' + port);
