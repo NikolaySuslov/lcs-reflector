@@ -1,8 +1,6 @@
-var path = require('path'),
-    http = require('http'),
+var http = require('http'),
     https = require('https'),
     fs = require('fs'),
-    url = require('url'),
     sio = require('socket.io'),
     reflector = require('./lib/reflector'),
     argv = require('optimist').argv;
@@ -108,7 +106,11 @@ function startVWF() {
     var srv = ssl ? https.createServer(sslOptions, OnRequest).listen(port) : http.createServer(OnRequest).listen(port);
     consoleNotice('Serving on port ' + port);
 
-    var socketManager = sio.listen(srv, { log: false });
+    var socketManager = sio.listen(srv, 
+        { 
+        log: false
+        //pingTimeout: 3600 
+    });
 
     socketManager.set('transports', ['websocket']);
     socketManager.sockets.on('connection', reflector.OnConnection);
