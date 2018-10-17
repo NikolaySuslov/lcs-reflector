@@ -1,0 +1,8 @@
+{
+    "ssl": true,
+    "port": 3001,
+    "sslKey":"./certs/server-key.pem",
+    "sslCert":"./certs/server-crt.pem",
+    "sslCA":"./certs/ca-crt.pem",
+    "certPwd": ""
+}
