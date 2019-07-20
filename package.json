@@ -21,10 +21,9 @@
     "crypto": "1.0.1",
     "socket.io": "2.2.0",
     "socket.io-client": "^2.2.0",
-    "async": "2.6.2",
-    "mime": "2.4.2",
-    "optimist": "0.6.1",
-    "winston": "3.2.1"
+    "async": "3.1.0",
+    "mime": "2.4.4",
+    "optimist": "0.6.1"
   },
   "license": "MIT"
 }
