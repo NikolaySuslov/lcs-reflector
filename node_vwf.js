@@ -8,7 +8,7 @@ Virtual World Framework Apache 2.0 license  (https://github.com/NikolaySuslov/lc
 
 var http = require('http'),
     https = require('https'),
-    argv = require('optimist').argv,
+    argv = require('yargs').argv,
     sio = require('socket.io'),
     config = require('./server/readConfig')
 

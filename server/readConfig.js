@@ -5,7 +5,7 @@ ADL VW Sandbox Apache 2.0 license(https://github.com/NikolaySuslov/lcs-reflector
 */
 
 var fs = require('fs'),
-    argv = require('optimist').argv
+    argv = require('yargs').argv
     //logger = require('./logger')
 
 function parseConfigOptions() {
