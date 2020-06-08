@@ -59,7 +59,7 @@ function startVWF(reflector) {
         });
         var inst = Object.keys(global.instances);
         var jsonobject = {
-            "reflector": "v0.0.2"
+            "reflector": "v0.5"
             //"instances": inst
         }
         response.write(JSON.stringify(jsonobject), "utf8");
