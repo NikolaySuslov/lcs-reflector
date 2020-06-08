@@ -1,7 +1,7 @@
 {
   "name": "lcs-reflector",
   "description": "LiveCoding.space reflector",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "author": "Nikolai Suslov",
   "scripts": {
     "start": "node ./index.js",
