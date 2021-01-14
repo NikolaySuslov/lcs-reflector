@@ -9,7 +9,7 @@ Virtual World Framework Apache 2.0 license  (https://github.com/NikolaySuslov/lc
 var http = require('http'),
     https = require('https'),
     argv = require('yargs').argv,
-    sio = require('socket.io'),
+    //sio = require('socket.io'),
     config = require('./server/readConfig')
 
 
@@ -59,7 +59,7 @@ function startVWF(reflector) {
         });
         var inst = Object.keys(global.instances);
         var jsonobject = {
-            "reflector": "v0.5"
+            "reflector": "v0.7.2"
             //"instances": inst
         }
         response.write(JSON.stringify(jsonobject), "utf8");
@@ -91,13 +91,17 @@ function startVWF(reflector) {
     var srv = conf.ssl ? https.createServer(conf.sslOptions, OnRequest).listen(conf.port) : http.createServer(OnRequest).listen(conf.port);
     consoleNotice('Serving on port ' + conf.port);
 
-    var socketManager = sio.listen(srv,
-        {
-            log: false
-            //pingTimeout: 3600 
-        });
+    // var socketManager = sio.listen(srv,
+    //     {
+    //         log: false
+    //         //pingTimeout: 3600 
+    //     });
 
-    socketManager.set('transports', ['websocket']);
+    socketManager = require('socket.io')(srv, {
+        transports: ['websocket']
+    }); 
+
+    //socketManager.set('transports', ['websocket']);
     socketManager.sockets.on('connection', reflector.OnConnection);
 }
 
