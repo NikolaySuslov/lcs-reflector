@@ -1,7 +1,8 @@
 # LiveCoding.space reflector
 
 Standalone message reflector for LiveCoding.space application (base on VWF reflector)  
-Live at [https://time.livecoding.space](https://time.livecoding.space)
+Live at [https://time.livecoding.space](https://time.livecoding.space)  
+Live at [https://time.krestianstvo.org](https://time.krestianstvo.org)
 
 ## Contributing
 
