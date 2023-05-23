@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "crypto": "1.0.1",
-    "socket.io": "4.5.1",
+    "socket.io": "4.6.1",
     "yargs": "17.5.1"
   },
   "license": "MIT"
