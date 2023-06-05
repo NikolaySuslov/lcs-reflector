@@ -5,10 +5,10 @@ Copyright (c) 2014-2018 Nikolai Suslov and the Krestianstvo.org project contribu
 Virtual World Framework Apache 2.0 license  (https://github.com/NikolaySuslov/lcs-reflector/blob/master/licenses/LICENSE_VWF.md)
 */
 
-
 var http = require('http'),
     https = require('https'),
     argv = require('yargs').argv,
+    wslib = require('ws'),
     //sio = require('socket.io'),
     config = require('./server/readConfig')
 
@@ -59,7 +59,7 @@ function startVWF(reflector) {
         });
         var inst = Object.keys(global.instances);
         var jsonobject = {
-            "reflector": "v0.7.2"
+            "reflector": "v0.8.0"
             //"instances": inst
         }
         response.write(JSON.stringify(jsonobject), "utf8");
@@ -88,21 +88,13 @@ function startVWF(reflector) {
 
     var conf = config.parseConfigOptions();
 
-    var srv = conf.ssl ? https.createServer(conf.sslOptions, OnRequest).listen(conf.port) : http.createServer(OnRequest).listen(conf.port);
+    var server = conf.ssl ? https.createServer(conf.sslOptions, OnRequest): http.createServer(OnRequest);
     consoleNotice('Serving on port ' + conf.port);
 
-    // var socketManager = sio.listen(srv,
-    //     {
-    //         log: false
-    //         //pingTimeout: 3600 
-    //     });
+    const wss = new wslib.WebSocketServer({server});
+    wss.on('connection', reflector.OnConnection);
 
-    socketManager = require('socket.io')(srv, {
-        transports: ['websocket']
-    }); 
-
-    //socketManager.set('transports', ['websocket']);
-    socketManager.sockets.on('connection', reflector.OnConnection);
+    server.listen(conf.port) 
 }
 
 exports.startVWF = startVWF;
